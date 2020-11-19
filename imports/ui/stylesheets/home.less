@@ -1,0 +1,333 @@
+
+
+
+// Phần css của trang home
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+header{
+    position: sticky;
+    top: 0px;
+    background-color: #ffffff;
+    width: 100%;
+    z-index: 1000;
+}
+
+section{
+    position: relative;
+    height: calc(100vh - 3rem);
+    width: 100%;
+    background: url('bg.jpg') no-repeat top center / cover;
+    overflow: hidden;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+#viewDiv{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container{
+    max-width: 65rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+}
+
+.logo-container{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nav-btn{
+    flex: 3;
+    display: flex;
+}
+
+.nav-links{
+    flex: 2;
+}
+
+.log-sign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.logo{
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 3rem;
+    height: 40px;
+}
+
+.logo span{
+    font-weight: 300;
+}
+
+.btn{
+    display: inline-block;
+    padding: .5rem 1.3rem;
+    font-size: .8rem;
+    border: 2px solid #fff;
+    border-radius: 2rem;
+    line-height: 1;
+    margin: 0 .2rem;
+    transition: .3s;
+    text-transform: uppercase;
+}
+
+.btn.solid, .btn.transparent:hover{
+    background-color: #fff;
+    color: #69bde7;
+}
+
+.btn.transparent, .btn.solid:hover{
+    background-color: transparent;
+    color:  #69bde7;
+}
+
+.nav-links > ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link{
+    position: relative;
+}
+
+.nav-link > a{
+    line-height: 3rem;
+    color: rgb(88, 88, 243);
+    padding: 0 .8rem;
+    letter-spacing: 1px;
+    font-size: .95rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: .5s;
+}
+
+.nav-link > a > i{
+    margin-left: .2rem;
+}
+
+.nav-link:hover > a{
+    transform: scale(1.1);
+}
+
+.dropdown{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 10rem;
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.dropdown ul{
+    position: relative;
+}
+
+.dropdown-link > a{
+    display: flex;
+    background-color: #fff;
+    color: #3498db;
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    align-items: center;
+    justify-content: space-between;
+    transition: .3s;
+}
+
+.dropdown-link:hover > a{
+    background-color: #edf1f3;
+    color: rgb(144, 144, 238);
+}
+
+.dropdown-link:not(:nth-last-child(2)){
+    border-bottom: 1px solid #efefef;
+}
+
+.dropdown-link i{
+    transform: rotate(-90deg);
+}
+
+.arrow{
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    top: -5.5px;
+    left: 32px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    cursor: pointer;
+    transition: .3s;
+    z-index: -1;
+}
+
+.dropdown-link:first-child:hover ~ .arrow{
+    background-color: rgb(255, 254, 254);
+}
+
+.dropdown-link{
+    position: relative;
+}
+
+.dropdown.second{
+    top: 0;
+    left: 100%;
+    padding-left: .8rem;
+    cursor: pointer;
+    transform: translateX(10px);
+}
+
+.dropdown.second .arrow{
+    top: 10px;
+    left: -5.5px;
+}
+
+.nav-link:hover > .dropdown,
+.dropdown-link:hover > .dropdown{
+    transform: translate(0, 0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.esri-popup__main-container {
+    border-radius: 10px;
+    width: 50px;
+    /*background-color: #9daef5;*/
+}
+.esri-popup__footer {
+    display: none;
+}
+.esri-popup__button--dock {
+    display: none;
+}
+.esri-popup__header-title {
+    margin-left: 22px;
+    margin-bottom: 0px;
+    padding: 0;
+    width: 250.5px;
+    line-height: 18px;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+}
+.esri-popup__header-title table {
+    border-collapse: inherit;
+    border-spacing: 0px 10px;
+}
+.esri-popup__header-title table:hover {
+    background-color: #ffffff;
+}
+.esri-popup__header-title table tr td {
+    text-align: left;
+    padding-left: 7px;
+    color: rgb(20, 20, 20);
+    font-weight: 400;
+}
+.esri-popup__header-title  table  tr  th {
+    border-bottom: white;
+}
+.esri-widget__table tr td {
+    background-color: steelblue;
+    text-align: center;
+    color: snow;
+    font-weight: bold;
+    font-size: 14px;
+}
+.esri-widget__table tr th {
+    font-weight: bold;
+    color: #323232;
+    font-size: 14px;
+}
+.esri-feature__field-header {
+    width: 100px;
+}
+.esri-widget__table{
+    width: 250.5px;
+    font-family:  system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+}
+.esri-popup--shadow {
+    box-shadow: none;
+} 
+
+th, td {
+    text-align: left;
+    vertical-align: top;
+    width: 50%;
+}
+th {
+    padding: 7px;
+    background-color: #ffffff;
+}
+.esri-legend__layer-caption {
+    display: none;
+}
+.esri-popup {
+    width: 315px;
+}
+
+#timeSlider .custom-ticks {
+    background-color: black;
+    width: 1px;
+    height: 8px;
+    margin-left: 13px;
+}
+
+#timeSlider .custom-labels {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    color: black;
+    margin-left: 13px;
+}
+.esri-time-slider {
+    width: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
