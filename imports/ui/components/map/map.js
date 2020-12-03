@@ -17,7 +17,8 @@ Template.map.rendered = function () {
     // hiển thị phần bản đồ chính
 
     var layer = new MapImageLayer({
-      url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServerr",
+      //   url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServer",
+      url: "http://113.175.118.161:6080/arcgis/rest/services/mergePolygon_10days/MapServer",
       opacity: 0.5,
     });
     var map = new Map({
@@ -28,8 +29,8 @@ Template.map.rendered = function () {
     var view = new MapView({
       container: "viewDiv",
       map: map,
-      zoom: 7,
-      center: [105.834160, 21.027763]
+      zoom: 5,
+      center: [107.590866, 16.463713]
     });
 
     // Thêm một bản đồ nền để chuyển đổi
@@ -73,7 +74,8 @@ Template.map.rendered = function () {
     // tạo featureLayer để lấy dữ liệu
 
     var featureLayer = new FeatureLayer({
-      url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServer/0",
+      //   url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServer/0",
+      url: "http://113.175.118.161:6080/arcgis/rest/services/mergePolygon_10days/MapServer",
       opacity: 0.5,
       timeInfo: {
         startField: "time", // name of the date field
