@@ -30,13 +30,13 @@ Template.map.rendered = function () {
       container: "viewDiv",
       map: map,
       zoom: 5,
-      center: [107.590866, 16.463713]
+      center: [107.590866, 16.463713] // zoom bản đồ về vị trí lat, lon Hà Nội
     });
 
     // Thêm một bản đồ nền để chuyển đổi
     var toggle = new BasemapToggle({
       view: view,
-      nextBasemap: "gray-vector"
+      nextBasemap: "satellite"
     });
 
     view.ui.move("zoom", "bottom-left");
