@@ -18,7 +18,7 @@ Template.map.rendered = function () {
 
     var layer = new MapImageLayer({
       //   url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServer",
-      url: "http://113.175.118.161:6080/arcgis/rest/services/mergePolygon_10days/MapServer",
+      url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_MYD/MapServer",
       opacity: 0.5,
     });
     var map = new Map({
@@ -30,7 +30,7 @@ Template.map.rendered = function () {
       container: "viewDiv",
       map: map,
       zoom: 5,
-      center: [107.590866, 16.463713] // zoom bản đồ về vị trí lat, lon Hà Nội
+      center: [107.590866, 16.463713] // zoom bản đồ về vị trí lat, lon Thừa Thiên Huế
     });
 
     // Thêm một bản đồ nền để chuyển đổi
@@ -75,7 +75,7 @@ Template.map.rendered = function () {
 
     var featureLayer = new FeatureLayer({
       //   url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServer/0",
-      url: "http://113.175.118.161:6080/arcgis/rest/services/mergePolygon_10days/MapServer",
+      url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_MYD/MapServer/0",
       opacity: 0.5,
       timeInfo: {
         startField: "time", // name of the date field
