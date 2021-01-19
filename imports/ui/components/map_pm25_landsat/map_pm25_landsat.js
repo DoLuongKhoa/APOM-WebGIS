@@ -18,7 +18,7 @@ Template.map_pm25_landsat.rendered = function () {
 
         var layer = new MapImageLayer({
             //   url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServer",
-            url: "http://113.175.118.161:6080/arcgis/rest/services/Landsat_oneday/MapServer/",
+            url: "http://113.175.118.161:6080/arcgis/rest/services/Landsat_120m/MapServer",
             opacity: 0.5,
         });
         var map = new Map({
@@ -75,20 +75,20 @@ Template.map_pm25_landsat.rendered = function () {
 
         var featureLayer = new FeatureLayer({
             //   url: "http://113.175.118.161:6080/arcgis/rest/services/PM25_time/MapServer/0",
-            url: "http://113.175.118.161:6080/arcgis/rest/services/Landsat_oneday/MapServer/0",
+            url: "http://113.175.118.161:6080/arcgis/rest/services/Landsat_120m/MapServer/0",
             opacity: 0.5,
-            // timeInfo: {
-            //     startField: "time", // name of the date field
-            //     interval: {
-            //         // set time interval to one day
-            //         unit: "days",
-            //         value: 1
-            //     },
-            //     fullTimeExtent: {
-            //         start: new Date(2017, 0, 1),
-            //         end: new Date(2017, 0, 10)
-            //     }
-            // }
+            timeInfo: {
+                startField: "time", // name of the date field
+                interval: {
+                    // set time interval to one day
+                    unit: "days",
+                    value: 1
+                },
+                fullTimeExtent: {
+                    start: new Date(2019, 0, 1),
+                    end: new Date(2019, 0, 6)
+                }
+            }
         });
 
         // sử dụng popupTemplate để hiển thị popup 
@@ -142,41 +142,39 @@ Template.map_pm25_landsat.rendered = function () {
 
         // thêm time slider và hiển thị dữ liệu từ 1/1/2017 đến 10/1/2017
 
-        // var timeSlider = new TimeSlider({
-        //     container: "timeSlider",
-        //     view: view,
-        //     mode: "cumulative-from-start",
-        //     tickConfigs: [{
-        //         mode: "position",
-        //         values: [
-        //             new Date(2019, 0, 1), new Date(2019, 0, 2), new Date(2019, 0, 3),
-        //             new Date(2019, 0, 4), new Date(2019, 0, 5), new Date(2019, 0, 6),
-        //             new Date(2019, 0, 7), new Date(2019, 0, 8), new Date(2019, 0, 9),
-        //             new Date(2019, 0, 10)
-        //         ].map((date) => date.getTime()),
-        //         labelsVisible: true,
-        //         labelFormatFunction: (value) => { // get the full year from the date
-        //             const date = new Date(value);
-        //             return `${date.getDate() + "/1"}`; // only display the last two digits of the year
-        //         },
-        //         tickCreatedFunction: (value, tickElement, labelElement) => { // callback for the ticks
-        //             tickElement.classList.add("custom-ticks");  // assign a custom css for the ticks 
-        //             labelElement.classList.add("custom-labels"); // assign a custom css for the labels
-        //         }
-        //     }]
+        var timeSlider = new TimeSlider({
+            container: "timeSlider",
+            view: view,
+            mode: "cumulative-from-start",
+            tickConfigs: [{
+                mode: "position",
+                values: [
+                    new Date(2019, 0, 1), new Date(2019, 0, 2), new Date(2019, 0, 3),
+                    new Date(2019, 0, 4), new Date(2019, 0, 5), new Date(2019, 0, 6)
+                ].map((date) => date.getTime()),
+                labelsVisible: true,
+                labelFormatFunction: (value) => { // get the full year from the date
+                    const date = new Date(value);
+                    return `${date.getDate() + "/1"}`; // only display the last two digits of the year
+                },
+                tickCreatedFunction: (value, tickElement, labelElement) => { // callback for the ticks
+                    tickElement.classList.add("custom-ticks");  // assign a custom css for the ticks 
+                    labelElement.classList.add("custom-labels"); // assign a custom css for the labels
+                }
+            }]
 
-        // });
+        });
 
 
-        // // wait for the time-aware layer to load
-        // featureLayer.when(function () {
-        //     // set up time slider properties based on layer timeInfo
-        //     timeSlider.fullTimeExtent = featureLayer.timeInfo.fullTimeExtent;
-        //     timeSlider.stops = {
-        //         interval: featureLayer.timeInfo.interval
-        //     };
-        // });
-        // view.ui.add(timeSlider, "bottom-left");
+        // wait for the time-aware layer to load
+        featureLayer.when(function () {
+            // set up time slider properties based on layer timeInfo
+            timeSlider.fullTimeExtent = featureLayer.timeInfo.fullTimeExtent;
+            timeSlider.stops = {
+                interval: featureLayer.timeInfo.interval
+            };
+        });
+        view.ui.add(timeSlider, "bottom-left");
 
     });
 }
